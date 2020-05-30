@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>View</title>
+</head>
+<body>
+  <form action="" method="post">
+    <input type="text" name="drugcode" username="code" placeholder="code" required>
+    <button type="submit">Submit</button>
+  </form>
+  <table>
+    <tbody>
+      <% result.forEach(function(drug, index){ %>
+          <tr>
+              <td><%= drug.Drug_code %></td>
+              <td><%= drug.Name %></td>
+              <td><%= drug.Form %></td>
+              <td><%= drug.Strength %></td>
+              <td><%= drug.Stock %></td>
+              <% if(admin==1) {%>
+              <td><a href="/update/<%= drug.Stock %>">Edit</a></td>
+              <% }%>
+          </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
