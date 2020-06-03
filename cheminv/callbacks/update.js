@@ -1,4 +1,4 @@
-var viewHandler = function(req,res){
+var updateHandler = function(req,res){
   if(!req.cookies.user){
     return res.status(500);
   }
@@ -12,7 +12,7 @@ var viewHandler = function(req,res){
 
   var id = req.params.id;
 
-  var query = "SELECT * FROM Inventory WHERE ID = " + id ;
+  var query = "SELECT * FROM Inventory WHERE Serial = " + id ;
 
   db.query(query, function(err,result){
     if(err){
@@ -27,5 +27,5 @@ var viewHandler = function(req,res){
 }
 
 module.exports = {
-  viewHandler : viewHandler
+  updateHandler : updateHandler
 }

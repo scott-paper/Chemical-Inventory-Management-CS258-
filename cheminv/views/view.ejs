@@ -8,20 +8,21 @@
 </head>
 <body>
   <form action="" method="post">
-    <input type="text" name="drugcode" username="code" placeholder="code" required>
+    Item Name<input type="text" name="item_name" placeholder="Item Name" required>
+    Location<input type="text" name="location" placeholder="Location">
     <button type="submit">Submit</button>
   </form>
   <table>
     <tbody>
-      <% result.forEach(function(drug, index){ %>
+      <% result.forEach(function(chemical, index){ %>
           <tr>
-              <td><%= drug.Drug_code %></td>
-              <td><%= drug.Name %></td>
-              <td><%= drug.Form %></td>
-              <td><%= drug.Strength %></td>
-              <td><%= drug.Stock %></td>
+              <td><%= chemical.Serial %></td>
+              <td><%= chemical.Item_Name %></td>
+              <td><%= chemical.Vendor %></td>
+              <td><%= chemical.Location %></td>
+              <td><%= chemical.Stock %></td>
               <% if(admin==1) {%>
-              <td><a href="/update/<%= drug.Stock %>">Edit</a></td>
+              <td><a href="/update/<%= chemical.Serial %>">Edit</a></td>
               <% }%>
           </tr>
       <% }); %>

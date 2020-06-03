@@ -1,8 +1,8 @@
 var auth = function(req,res){
-  var userid = req.body.username;
+  var userID = req.body.userID;
   var password = req.body.password;
 
-  var query = "SELECT * FROM USERS WHERE UserID = '" + userID + "' AND Password = '" + password + "'";
+  var query = "SELECT * FROM User WHERE UserID = '" + userID + "' AND Password = '" + password + "'";
 
   db.query(query,function(err,result){
     if(err){
@@ -10,10 +10,11 @@ var auth = function(req,res){
     }
     var user = {
       username : result[0].Username,
-      admin : result[0].admin
+      admin : result[0].Admin
     };
-    res.cookies("userData",user);
-    res.render('home.ejs')
+    console.log(user);
+    res.cookie("userData",user);
+    res.redirect('/view');
   });
 }
 

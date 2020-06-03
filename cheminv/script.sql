@@ -4,17 +4,17 @@ CREATE TABLE User(
   Password VARCHAR(10),
   Admin INTEGER,
   PRIMARY KEY(UserID)
-)
+);
 
 CREATE TABLE Inventory(
   Serial INT NOT NULL,
-  Item_Name VARCHAR(20) NOT NULL,
+  Item_Name VARCHAR(20),
   Vendor VARCHAR(20),
   Catalog_No VARCHAR(20),
   Owner VARCHAR(20),
   Location VARCHAR(20),
-  Sub-location VARCHAR(20),
-  Location Details VARCHAR(30),
+  Sub_location VARCHAR(20),
+  Location_Details VARCHAR(30),
   Price INT,
   Stock INT,
   Unit_Size VARCHAR(20),
@@ -33,4 +33,4 @@ CREATE TABLE Inventory(
   Physical_State VARCHAR(20),
   Purity VARCHAR(20),
   PRIMARY KEY(Serial)
-)
+);
