@@ -22,7 +22,7 @@ var db = mysql.createConnection({
 });
 global.db = db;
 
-var port = 8085;
+var port = 8083;
 
 app.set('port',port);
 app.set('views','./views');
