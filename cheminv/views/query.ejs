@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .w3-tangerine {
+    font-family: "Tangerine", serif;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    left: 0%;
+  }
+</style>
+
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="s">
+    <div class="">
+      <div class="w3-container">
+        <center> <h1 style="color : white ">Chemical Inventory</h1></center>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Search Query</h2>
+    <form action="" method="post">
+        Name:<input type="text" name="item_name" placeholder="Item Name">
+        Location:<input type="text" name="location" placeholder="Item Location">
+        <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>Result of your search query : </h2>
+    <table style="width:100%" class="table" >
+      <thead>
+        <tr>
+          <th>Serial Number</th>
+          <th>Item Name</th>
+          <th>Vendor</th>
+          <th>Catalog No</th>
+          <th>Owner</th>
+          <th>Location</th>
+          <th>Sub Location</th>
+          <th>Location Details</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Unit Size</th>
+          <th>URL</th>
+          <th>Details</th>
+          <th>Expiry Date</th>
+          <th>Lot number</th>
+          <th>Cas number</th>
+          <th>Created By</th>
+          <th>Alternate name</th>
+          <th>Bottle Reference</th>
+          <th>Date opened</th>
+          <th>Formula</th>
+          <th>Life span</th>
+          <th>Molecular Weight</th>
+          <th>Physical state</th>
+          <th>Purity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% result.forEach(function(chemical, index){ %>
+            <tr>
+                <td><%= chemical.Serial %></td>
+                <td><%= chemical.Item_Name %></td>
+                <td><%= chemical.Vendor %></td>
+                <td><%= chemical.Catalog_No %></td>
+                <td><%= chemical.Owner %></td>
+                <td><%= chemical.Location %></td>
+                <td><%= chemical.Sub_location %></td>
+                <td><%= chemical.Location_Details %></td>
+                <td><%= chemical.Price %></td>
+                <td><%= chemical.Stock %></td>
+                <td><%= chemical.Unit_Size %></td>
+                <td><%= chemical.URL %></td>
+                <td><%= chemical.Technical_Details %></td>
+                <td><%= chemical.Expiration_Date %></td>
+                <td><%= chemical.Lot_No %></td>
+                <td><%= chemical.Cas_No %></td>
+                <td><%= chemical.Created_By %></td>
+                <td><%= chemical.Alternate_Name %></td>
+                <td><%= chemical.Bottle_Reference %></td>
+                <td><%= chemical.Date_Opened %></td>
+                <td><%= chemical.Formula %></td>
+                <td><%= chemical.Lifespan %></td>
+                <td><%= chemical.Molecular_Weight %></td>
+                <td><%= chemical.Physical_State %></td>
+                <td><%= chemical.Purity %></td>
+                <% if(admin==1) {%>
+                <td><a href="/update/<%= chemical.Serial %>">Edit</a></td>
+                <% }%>
+            </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script type="text/javascript" src="/js/particle.js"></script>
+</body>
+
+</html>

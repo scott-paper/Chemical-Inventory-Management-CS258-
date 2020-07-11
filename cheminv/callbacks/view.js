@@ -9,7 +9,7 @@ var viewHandler = function(req,res){
     if(err){
       throw error;
     }
-    res.render('view.ejs',{
+    res.render('query.ejs',{
       result : result,
       username : username,
       admin : admin

@@ -8,9 +8,10 @@ var {loginHandler} = require('./callbacks/login');
 var {auth} = require('./callbacks/auth');
 var {viewHandler} = require('./callbacks/view');
 var {searchHandler} = require('./callbacks/search');
-//var {updateHandler} = require('./callbacks/update');
-//var {postupdate} = require('./callbacks/postupdate');
-//var {addHandler} = require('./callbacks/add');
+var {updateHandler} = require('./callbacks/update');
+var {postupdate} = require('./callbacks/postupdate');
+var {addHandler} = require('./callbacks/add');
+var {postadd} = require('./callbacks/postadd');
 
 var app = express();
 
@@ -22,15 +23,15 @@ var db = mysql.createConnection({
 });
 global.db = db;
 
-var port = 8083;
+var port = 8085;
 
 app.set('port',port);
 app.set('views','./views');
 app.set('view engine','ejs');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
+app.use(express.static(__dirname + '/public'));
 
 app.get('/home',function(req,res){
   res.render('home.ejs');
@@ -39,9 +40,9 @@ app.get('/login',loginHandler);
 app.post('/login',auth);
 app.get('/view',viewHandler);
 app.post('/view',searchHandler);
-//app.get('/update/:id',updateHandler);
-//app.post('/update/:id',postupdate);
-//app.get('/add',addHandler);
-
+app.get('/update/:id',updateHandler);
+app.post('/update/:id',postupdate);
+app.get('/add',addHandler);
+app.post('/add',postadd);
 
 app.listen(port);

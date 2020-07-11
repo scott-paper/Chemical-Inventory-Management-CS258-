@@ -1,8 +1,7 @@
-var postupdate = function(req,res){
+var postadd = function(req,res){
 
-
-  var query = "UPDATE Inventory SET ";
-
+  var query = "INSERT INTO Inventory ( ";
+  var query2 = "VALUES (";
   for(let key in req.body){
 
     var value = req.body[key];
@@ -17,36 +16,30 @@ var postupdate = function(req,res){
         query += "_" + z;
     }
 
-    query += " = ";
-
-    if (typeof(value) == "number") {
-      query += value;
-    }
-    else {
-      query += "'" + value + "'";
-    }
+    query2 += "'" + value + "'";
 
     query += " , ";
+    query2 += " , ";
 
   }
 
   query = query.slice(0,-2);
-  query += "WHERE Serial = " + req.params.id + " ;";
+  query2 = query2.slice(0,-2);
+  query += ") ";
+  query2 += ");";
+  query += query2;
+
   console.log(query);
 
 
-//alert??
   db.query(query,function(err,result){
     if(err){
       throw err;
-      //return res.status(500).send(err);
     }
     res.redirect('/view');
   });
-  console.log(req.body);
-
 }
 
 module.exports = {
-  postupdate : postupdate
+  postadd : postadd
 }

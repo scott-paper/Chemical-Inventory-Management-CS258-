@@ -1,5 +1,5 @@
 var loginHandler = function(req,res){
-  res.render('./login/new_login.ejs');
+  res.render('login.ejs');
 }
 
 module.exports = {
